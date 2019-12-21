@@ -1,23 +1,19 @@
-import React, { Component } from "react";
-import { Text, View } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
+import SplashScreen from "react-native-splash-screen";
 
-export default class HelloWorldApp extends Component {
-  render() {
-    return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "space-around",
-          alignItems: "center"
-        }}
-      >
-        <Text>Hello, world!</Text>
-        <Text>This is my first app</Text>
-        <Text>Things are working fine</Text>
-        <Text>things are super fast</Text>
-        <Text>It's super cool to work in this environment</Text>
-        <Text>Good bye for now...</Text>
-      </View>
-    );
-  }
+import HomeScreen from "./screen/HomeScreen";
+import StoriesScreen from "./screen/StoriesScreen";
+
+export default function App() {
+  return <StoriesScreen />;
 }
+
+const styles = StyleSheet.create({
+  text: {
+    color: "white"
+  },
+  screen: {
+    flex: 1
+  }
+});
