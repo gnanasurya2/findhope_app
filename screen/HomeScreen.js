@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 
 import Card from "../components/Card";
 import Color from "../constants/Colors";
@@ -8,13 +8,19 @@ import Button from "../components/Button";
 function HomeScreen(props) {
   return (
     <ScrollView style={styles.screen}>
-      <View style={styles.header}></View>
+      <View style={styles.header}>
+        <Image
+          source={require("../assests/7609.jpg")}
+          resize="contain"
+          style={styles.image}
+        />
+      </View>
       <View style={styles.head_box}>
         <Text style={styles.title}>OPEN UP</Text>
       </View>
       <Card>
         <View style={styles.text_box}>
-          <Text style={styles.text_heading}>LET'S GET INTRODUCTED</Text>
+          <Text style={styles.text_heading}>LET'S GET INTRODUCED</Text>
         </View>
         <View>
           <Text style={styles.text}>
@@ -24,7 +30,12 @@ function HomeScreen(props) {
             pariatur quidem quia.
           </Text>
         </View>
-        <Button title="BUY THERAPY SESSION" />
+        <Button
+          title="LISTEN TO OTHER'S STORIES"
+          onPress={() => {
+            props.navigation.navigate({ routeName: "Stories" });
+          }}
+        />
       </Card>
       <View style={styles.head_box}>
         <Text style={styles.title}>OVERCOME</Text>
@@ -63,7 +74,9 @@ function HomeScreen(props) {
     </ScrollView>
   );
 }
-
+HomeScreen.navigationOptions = {
+  headerTitle: "Find Hope"
+};
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -101,6 +114,10 @@ const styles = StyleSheet.create({
     textAlign: "left",
     paddingLeft: 10,
     paddingTop: 15
+  },
+  image: {
+    width: "100%",
+    height: "100%"
   }
 });
 

@@ -5,20 +5,19 @@ import {
   Image,
   StyleSheet,
   TouchableNativeFeedback,
-  Modal
+  TouchableOpacity,
+  Platform
 } from "react-native";
 
 import Color from "../constants/Colors";
-function displayStoryHandler(story) {
-  return (
-    <Modal animationType="slide">
-      <View>{story}</View>
-    </Modal>
-  );
-}
+
 function Stories(props) {
+  let TouchableCmp = TouchableOpacity;
+  if (Platform.OS === "android" && Platform.Version >= 21) {
+    TouchableCmp = TouchableNativeFeedback;
+  }
   return (
-    <TouchableNativeFeedback>
+    <TouchableCmp onPress={props.onSelect}>
       <View style={styles.screen}>
         <View style={styles.image_box}>
           <Image
@@ -27,18 +26,14 @@ function Stories(props) {
             style={styles.image}
           />
         </View>
-        <View>
-          <Text style={styles.text}>{props.title}</Text>
-        </View>
       </View>
-    </TouchableNativeFeedback>
+    </TouchableCmp>
   );
 }
 
 const styles = StyleSheet.create({
   screen: {
     width: "90%",
-    height: 400,
     elevation: 10,
     backgroundColor: "white",
     alignSelf: "center",
@@ -52,17 +47,12 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 300,
     overflow: "hidden",
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10
   },
   image: {
     width: "100%",
     height: "100%"
-  },
-  text: {
-    color: Color.text,
-    fontSize: 20,
-    textAlign: "center"
   },
   scr: {
     flex: 1

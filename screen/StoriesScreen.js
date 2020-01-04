@@ -19,12 +19,30 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 var flag = true;
-function Item({ title, story, url }) {
-  return <Stories title={title} source={url} story={story} />;
-}
+
 function StoriesScreen(props) {
   const [loading, setLoading] = useState(true);
   const [stories, setStories] = useState([]);
+
+  function Item({ title, story, url }) {
+    return (
+      <Stories
+        title={title}
+        source={url}
+        story={story}
+        onSelect={() => {
+          props.navigation.navigate({
+            routeName: "Story",
+            params: {
+              story: story,
+              url: url
+            }
+          });
+        }}
+      />
+    );
+  }
+
   const ref = firebase.firestore().collection("stories");
   function tra(s) {
     props.trans(s);
