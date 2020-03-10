@@ -1,7 +1,7 @@
 export default {
-  background: "#F5F5F5",
-  primary: "#7727A4",
+  background: "#5BBC93",
+  primary: "#0E4375",
   text: "#696969",
   text_heading: "#000000",
-  button: "#35D0C0"
+  button: "#EF823F"
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import {
   TouchableNativeFeedback,
-  TouchableHighlight,
+  TouchableOpacity,
   Platform,
   Text,
   StyleSheet,
@@ -11,20 +11,22 @@ import {
 import Color from "../constants/Colors";
 
 function Button(props) {
-  if (Platform.OS === "android") {
-    return (
-      <TouchableNativeFeedback
-        onPress={props.onPress}
-        background={TouchableNativeFeedback.Ripple("white")}
-      >
-        <View style={styles.wrapper}>
-          <View style={styles.button}>
-            <Text style={styles.text}>{props.title}</Text>
-          </View>
-        </View>
-      </TouchableNativeFeedback>
-    );
+  let TouchableCmp = TouchableOpacity;
+  if (Platform.OS === "android" && Platform.Version >= 21) {
+    TouchableCmp = TouchableNativeFeedback;
   }
+  return (
+    <TouchableCmp
+      onPress={props.onPress}
+      background={TouchableNativeFeedback.Ripple("white")}
+    >
+      <View style={styles.wrapper}>
+        <View style={styles.button}>
+          <Text style={styles.text}>{props.title}</Text>
+        </View>
+      </View>
+    </TouchableCmp>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -22,7 +22,8 @@ function StoryScreen(props) {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    padding: 10
+    padding: 10,
+    backgroundColor: Color.background
   },
   image_box: {
     width: "100%",
@@ -45,8 +46,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 19,
-    textAlign: "center",
-    lineHeight: 40
+    marginLeft: 10,
+    lineHeight: 30
   }
 });
 export default StoryScreen;

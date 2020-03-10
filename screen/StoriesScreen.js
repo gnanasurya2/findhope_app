@@ -18,7 +18,6 @@ var firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-var flag = true;
 
 function StoriesScreen(props) {
   const [loading, setLoading] = useState(true);
@@ -44,9 +43,7 @@ function StoriesScreen(props) {
   }
 
   const ref = firebase.firestore().collection("stories");
-  function tra(s) {
-    props.trans(s);
-  }
+
   useEffect(() => {
     return ref.onSnapshot(querySnapshot => {
       const list = [];

@@ -3,8 +3,10 @@ import { StyleSheet, View } from "react-native";
 import SplashScreen from "react-native-splash-screen";
 
 import StoryNavigator from "./navigation/StoryNavigator";
+import LoginScreen from "./screen/LoginScreen";
+
 export default function App() {
-  return <StoryNavigator />;
+  return <LoginScreen />;
 }
 
 const styles = StyleSheet.create({
